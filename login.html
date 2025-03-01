@@ -65,13 +65,13 @@
         }
 
         .login-box {
-            background: linear-gradient(135deg, #CBDDEC, #A3CBE5);
+            background: linear-gradient(135deg, #5c97c8, #b6612d);
             z-index: 1;
             margin-right: -50px;
         }
 
         .info-box {
-            background-color: #000000;
+            background: linear-gradient(135deg, #ad7f29, #41b9ce);
             color: white;
             z-index: 2;
             position: relative;
@@ -205,6 +205,34 @@
             margin-right: auto;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
+/* Styling for the Homepage Button */
+.homepage-button {
+    display: block; /* Places button on a new line */
+    width: 60%;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000000;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation on hover */
+.homepage-button:hover {
+    background-color: #333333;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Button Click Effect */
+.homepage-button:active {
+    transform: scale(0.95);
+}
 
         .login-button:hover {
             transform: scale(1.05);
@@ -329,6 +357,14 @@
                     <p class="signup-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
                 </div>
             </div>
+            <button class="homepage-button" onclick="goToHomepage()">Go to Homepage</button>
+
+<script>
+    function goToHomepage() {
+        window.location.href = 'index.html';
+    }
+</script>
+
         </div>
         <div class="info-box">
             <div class="right-side">
@@ -372,10 +408,14 @@
             if (hasError) {
                 event.preventDefault();
             } else {
+                // Store login status
+                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+    
                 // Show confirmation message
                 showSuccess('Login successful! Redirecting...');
                 setTimeout(() => {
-                    window.location.href = 'home.html'; // Redirecting to home page
+                    window.location.href = 'complaint.html'; // Redirecting to complaint page
                 }, 2000);
             }
         });
@@ -402,6 +442,7 @@
             document.querySelector('.login-form').appendChild(successMessage);
         }
     </script>
+    
     
      
 </body>

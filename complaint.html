@@ -4,115 +4,181 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaint Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            padding: 40px;
+            overflow-y: auto;
+            animation: backgroundFade 3s infinite alternate;
+        }
+
+        @keyframes backgroundFade {
+            0% { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+            100% { background: linear-gradient(135deg, #2a5298, #1e3c72); }
         }
 
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
             text-align: center;
+            border-top: 5px solid #004085;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h2 {
+            color: #333;
             margin-bottom: 20px;
+            font-size: 26px;
+            font-weight: 600;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: left;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-in-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #555;
             display: block;
-            font-weight: bold;
+            margin-bottom: 5px;
         }
 
-        input, textarea {
+        input, textarea, select {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s ease-in-out;
+            background: #f8f9fa;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #004085;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 64, 133, 0.4);
+            background: #fff;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
         }
 
         button {
-            background-color: #28a745;
+            background: linear-gradient(135deg, #004085, #0056b3);
             color: white;
-            padding: 10px;
+            padding: 14px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
             width: 100%;
+            transition: 0.3s ease-in-out;
+            text-transform: uppercase;
         }
 
         button:hover {
-            background-color: #218838;
+            background: linear-gradient(135deg, #0056b3, #004085);
+            transform: scale(1.05);
         }
 
         .success-message {
-            color: green;
+            color: #28a745;
             font-weight: bold;
             margin-top: 15px;
             display: none;
         }
+
+        #other-category {
+            display: none;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h2>Submit a Complaint</h2>
-    <form id="complaint-form">
-        <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
-        </div>
-        <div class="form-group">
-            <label for="complaint">Complaint Details</label>
-            <textarea id="complaint" rows="4" placeholder="Describe your complaint" required></textarea>
-        </div>
-        <button type="submit">Submit Complaint</button>
-        <div class="success-message" id="success-message">Complaint submitted successfully!</div>
-    </form>
-</div>
-
-<script>
-    document.getElementById('complaint-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form from reloading the page
-
-        var name = document.getElementById('name').value.trim();
-        var email = document.getElementById('email').value.trim();
-        var complaint = document.getElementById('complaint').value.trim();
-
-        if (name === '' || email === '' || complaint === '') {
-            alert('Please fill in all fields before submitting.');
-            return;
-        }
-
-        // Show success message
-        document.getElementById('success-message').style.display = 'block';
-
-        // Clear the form fields after submission
-        setTimeout(() => {
-            document.getElementById('complaint-form').reset();
-            document.getElementById('success-message').style.display = 'none';
-        }, 3000);
-    });
-</script>
-
+    <div class="container">
+        <h2>Submit a Complaint</h2>
+        <form id="complaint-form">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date & Time</label>
+                <input type="datetime-local" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="Enter location" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" required onchange="toggleOtherCategory()">
+                    <option value="harassment">Harassment</option>
+                    <option value="theft">Theft</option>
+                    <option value="violence">Violence</option>
+                    <option value="corruption">Corruption</option>
+                    <option value="fraud">Fraud</option>
+                    <option value="discrimination">Discrimination</option>
+                    <option value="environmental">Environmental Issues</option>
+                    <option value="cybercrime">Cybercrime</option>
+                    <option value="other">Other</option>
+                </select>
+                <input type="text" id="other-category" placeholder="Enter other category" />
+            </div>
+            <script>
+                function toggleOtherCategory() {
+                    var category = document.getElementById("category").value;
+                    var otherCategory = document.getElementById("other-category");
+                    if (category === "other") {
+                        otherCategory.style.display = "block";
+                        otherCategory.required = true;
+                    } else {
+                        otherCategory.style.display = "none";
+                        otherCategory.required = false;
+                    }
+                }
+            </script>
+            <button type="submit">Submit Complaint</button>
+            <div class="success-message" id="success-message">Complaint submitted successfully! Redirecting to home page...</div>
+        </form>
+    </div>
 </body>
 </html>

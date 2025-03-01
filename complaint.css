@@ -1,100 +1,106 @@
-/* General styles */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f8f9fa;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    padding: 20px;
 }
 
-/* Container styling */
+/* Complaint Form Container */
 .container {
     background: white;
-    padding: 25px;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 420px;
     text-align: center;
-    animation: fadeIn 0.5s ease-in-out;
+    border-top: 5px solid #007bff;
 }
 
-/* Heading */
+/* Form Title */
 h2 {
-    margin-bottom: 20px;
     color: #333;
+    margin-bottom: 20px;
     font-size: 24px;
+    font-weight: 600;
 }
 
-/* Form groups */
+/* Form Fields */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
-/* Labels */
 label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 14px;
     color: #555;
+    display: block;
+    margin-bottom: 5px;
 }
 
-/* Input fields */
 input, textarea {
     width: 100%;
     padding: 12px;
-    margin-top: 5px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Input field focus effect */
 input:focus, textarea:focus {
     border-color: #007bff;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
-/* Button styling */
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* Submit Button */
 button {
     background-color: #007bff;
     color: white;
     padding: 12px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    width: 100%;
     font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s ease;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Button hover effect */
 button:hover {
     background-color: #0056b3;
 }
 
-/* Success message */
+/* Success Message */
 .success-message {
-    color: green;
+    color: #28a745;
     font-weight: bold;
     margin-top: 15px;
     display: none;
-    font-size: 14px;
 }
 
-/* Animation for form appearance */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 20px;
     }
 }

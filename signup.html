@@ -6,34 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
     <link rel="stylesheet" href="signup.css">
+    <style>
+        /* Styling for the Homepage Button */
+        .homepage-button {
+            display: block; /* Places button on a new line */
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Animation on hover */
+        .homepage-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body>
     <div class="signup-container">
-            <div class="signup-form">
-                <h1>Sign Up</h1>
-                <div class="form-group">
-                    <label for="fullname">Full Name</label>
-                    <input type="text" id="fullname" placeholder="Enter your full name">
-                    <small class="error-message"></small>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email ID</label>
-                    <input type="email" id="email" placeholder="Enter your email">
-                    <small class="error-message"></small>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password">
-                    <small class="error-message"></small>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" placeholder="Confirm your password">
-                    <small class="error-message"></small>
-                </div>
-                <button class="signup-button">Sign Up</button>
-                <p class="login-link">Already have an account? <a href="login.html">Log In</a></p>
+        <div class="signup-form">
+            <h1>Sign Up</h1>
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" placeholder="Enter your full name">
+                <small class="error-message"></small>
+            </div>
+            <div class="form-group">
+                <label for="email">Email ID</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <small class="error-message"></small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+                <small class="error-message"></small>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password">
+                <small class="error-message"></small>
+            </div>
+            <button class="signup-button">Sign Up</button>
+            <p class="login-link">Already have an account? <a href="login.html">Log In</a></p>
+            
+            <!-- Go to Homepage Button (New Line & Animation) -->
+            <button class="homepage-button" onclick="goToHomepage()">Go to Homepage</button>
         </div>
     </div>
 
@@ -71,9 +97,17 @@
             }
 
             if (valid) {
-                alert("Signup successful!");
+                alert("Signup successful! Redirecting to login page...");
+                setTimeout(() => {
+                    window.location.href = "login.html"; // Redirect to login page
+                }, 2000);
             }
         });
+
+        // Go to Homepage function
+        function goToHomepage() {
+            window.location.href = 'index.html';
+        }
     </script>
 
 </body>

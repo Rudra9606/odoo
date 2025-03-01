@@ -15,89 +15,91 @@
     <nav class="navigation max-width-1 m-auto">
         <div class="nav-left">
             <a href="/">
-                <span><img src="Safe speak.png" width="100px" alt=""></span>
+                <span><img src="Safe speak.png" width="100px" alt="Safe Speak"></span>
             </a>
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="/contact.html">Contact</a></li>
-                <li><a href="login.html">Log in/ Register</a></li>
+                <li><a href="login.html" id="login-link">Log in / Register</a></li>
             </ul>
         </div>
-        <div class="nav-right">
-            <form action="/search.html" method="get">
-                <input class="form-input" type="text" name="query" placeholder="Article Search">
-                <button class="btn">Search</button>
-            </form>
-
-        </div>
-
     </nav>
+
     <div class="max-width-1 m-auto">
         <hr>
     </div>
+
     <div class="m-auto content max-width-1 my-2">
         <div class="content-left">
             <h1>Protecting your voice, ensuring justice</h1>
             <p>To address the issue of fear and inefficiency in complaint filing, we propose the
                 development of a secure online platform that allows individuals to register complaints
-                anonymously with supporting images and proofs. The platform will ensure the proper
-                escalation of complaints to the designated authorities while keeping the complainant’s
-                identity protected.</p>
-            <p>At SafeSpeak, we believe every voice deserves to be heard. Our platform empowers
-                 you to raise concerns, ensuring fair resolutions and accountability. Together, we strive
-                  for justice, transparency, and a better experience for all.</p>
+                anonymously with supporting images and proofs.</p>
         </div>
         <div class="content-right">
-            <img src="judgment-8442199_640.jpg" alt="iBlog">
+            <img src="judgment-8442199_640.jpg" alt="Justice">
         </div>
     </div>
 
     <div class="max-width-1 m-auto">
         <hr>
     </div>
-  
-        </div>
-        <div class="home-article">
-            <div class="home-article-img">
-                <img src="img/7.jpg">
-            </div>
-            <div class="home-article-content font1">
-                <a href="/blogpost.html">
-                    <h3>People now have easy access to digital platforms to raise concerns
-                        and report issues. With just a click, they can voice their complaints
-                        and seek solutions from authorities or organizations. This highlights 
-                        the growing role of technology in addressing grievances and promoting 
-                        accountability..</h3>
-                </a>
-
-                
-            </div>
-        </div>
-        <div class="home-article">
-            <div class="home-article-img">
-                <img src="img/8.jpg">
-            </div>
-            <div class="home-article-content font1">
-                <a href="/blogpost.html">
-                    <h3>People coming together to raise their voices is a powerful act of demanding change and justice. It represents unity, strength, and the collective effort to challenge unfair policies or societal issues. By standing up against injustices, individuals can drive meaningful reforms and hold authorities accountable. Our website provides a platform to amplify these concerns and ensure they are heard.</h3>
-                </a>
-
-                
-            </div>
-        </div>
-       
-      
-       
-        
-        
-
-   
-
-    <div class="footer">
-        <p>Copyright &copy; SafeSpeak.com </p>
-       
+    
+    <!-- Complaint Button ABOVE the images -->
+    <div class="complaint-section max-width-1 m-auto my-2" style="text-align: center;">
+        <button class="btn complaint-button">Enter The Complaint</button>
     </div>
+
+    <div class="home-article">
+        <div class="home-article-img">
+            <img src="img/7.jpg">
+        </div>
+        <div class="home-article-content font1">
+            <a href="/blogpost.html">
+                <h3>People now have easy access to digital platforms to raise concerns and report issues.</h3>
+            </a>
+        </div>
+    </div>
+    
+    <div class="home-article">
+        <div class="home-article-img">
+            <img src="img/8.jpg">
+        </div>
+        <div class="home-article-content font1">
+            <a href="/blogpost.html">
+                <h3>People coming together to raise their voices is a powerful act of demanding change and justice.</h3>
+            </a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Copyright &copy; SafeSpeak.com</p>
+    </div>
+    
+    <script>
+        document.querySelector(".complaint-button").addEventListener("click", function() {
+            const isLoggedIn = localStorage.getItem("userLoggedIn"); // Check if user is logged in
+
+            if (!isLoggedIn) {
+                alert("Please log in to submit a complaint.");
+                window.location.href = "login.html"; // Redirect to login page
+            } else {
+                window.location.href = "complaint-form.html"; // Redirect to complaint submission page
+            }
+        });
+
+        // Change login button if user is logged in
+        if (localStorage.getItem("userLoggedIn")) {
+            document.getElementById("login-link").innerText = "Logout";
+            document.getElementById("login-link").href = "#";
+            document.getElementById("login-link").addEventListener("click", function() {
+                localStorage.removeItem("userLoggedIn");
+                window.location.reload();
+            });
+        }
+    </script>
+
 </body>
 
 </html>

@@ -346,49 +346,63 @@
     <script>
         document.getElementById('show-password').addEventListener('change', function() {
             var passwordField = document.getElementById('password');
-            if (this.checked) {
-                passwordField.type = 'text'; 
+            passwordField.type = this.checked ? 'text' : 'password';
+        });
+    
+        document.querySelector('.login-button').addEventListener('click', function(event) {
+            var emailField = document.getElementById('email');
+            var passwordField = document.getElementById('password');
+            var email = emailField.value.trim();
+            var password = passwordField.value.trim();
+    
+            // Remove existing error messages and confirmation messages
+            document.querySelectorAll('.error-message, .success-message').forEach(el => el.remove());
+    
+            var hasError = false;
+    
+            if (email === '') {
+                showError(emailField, 'Email cannot be empty');
+                hasError = true;
+            }
+            if (password === '') {
+                showError(passwordField, 'Password cannot be empty');
+                hasError = true;
+            }
+    
+            if (hasError) {
+                event.preventDefault();
             } else {
-                passwordField.type = 'password'; 
+                // Show confirmation message
+                showSuccess('Login successful! Redirecting...');
+                setTimeout(() => {
+                    window.location.href = 'home.html'; // Redirecting to home page
+                }, 2000);
             }
         });
-
-    document.querySelector('.login-button').addEventListener('click', function(event) {
-        var emailField = document.getElementById('email');
-        var passwordField = document.getElementById('password');
-        var email = emailField.value.trim();
-        var password = passwordField.value.trim();
-
-        // Remove existing error messages
-        document.querySelectorAll('.error-message').forEach(el => el.remove());
-
-        var hasError = false;
-
-        if (email === '') {
-            showError(emailField, 'Email cannot be empty');
-            hasError = true;
+    
+        function showError(inputElement, message) {
+            var errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.style.color = 'red';
+            errorMessage.style.fontSize = '0.9em';
+            errorMessage.style.marginTop = '5px';
+            errorMessage.textContent = message;
+            inputElement.parentNode.appendChild(errorMessage);
         }
-        if (password === '') {
-            showError(passwordField, 'Password cannot be empty');
-            hasError = true;
+    
+        function showSuccess(message) {
+            var successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.style.color = 'green';
+            successMessage.style.fontSize = '1em';
+            successMessage.style.fontWeight = 'bold';
+            successMessage.style.marginTop = '15px';
+            successMessage.style.textAlign = 'center';
+            successMessage.textContent = message;
+            document.querySelector('.login-form').appendChild(successMessage);
         }
-
-        if (hasError) {
-            event.preventDefault();
-        }
-    });
-
-    function showError(inputElement, message) {
-        var errorMessage = document.createElement('div');
-        errorMessage.className = 'error-message';
-        errorMessage.style.color = 'red';
-        errorMessage.style.fontSize = '0.9em';
-        errorMessage.style.marginTop = '5px';
-        errorMessage.textContent = message;
-        inputElement.parentNode.appendChild(errorMessage);
-    }
-
-
-    </script>   
+    </script>
+    
+     
 </body>
 </html>

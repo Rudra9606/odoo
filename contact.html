@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/mobile.css">
+
     <title>Contact Us - iBlog</title>
 </head>
 <body>
@@ -19,6 +20,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Log in/ Register</a></li>
             </ul>
         </div>
         <div class="nav-right">
@@ -36,29 +38,60 @@
     <div class="contact-content font1 max-width-1 m-auto">
         <div class="max-width-1 m-auto mx-1">
             <h2>Feel Free to Contact Us</h2>
+            <div id="error-message" style="color: red;"></div>
             <div class="contact-form">
                 <div class="form-box">
-                    <input type="text" placeholder="Enter Your Name">
+                    <input type="text" id="name" placeholder="Enter Your Name">
                 </div>
                 <div class="form-box">
-                    <input type="text" placeholder="Enter Your Phone Number">
+                    <input type="text" id="phone" placeholder="Enter Your Phone Number">
                 </div>
                 <div class="form-box">
-                    <input type="text" placeholder="Enter Your Email Id">
+                    <input type="text" id="email" placeholder="Enter Your Email Id">
                 </div>
                 <div class="form-box">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="How may we help you?"></textarea>
+                    <textarea id="message" cols="30" rows="10" placeholder="How may we help you?"></textarea>
                 </div>
                 <div class="form-box">
-                    <button class="btn">Submit</button>
+                    <button class="btn" onclick="validateForm()">Submit</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <p>Copyright &copy; iBlog.com</p>
-        <a href="https://www.vecteezy.com/free-vector/typewriter">Vector Credits: Vecteezy</a>
+        <p>Copyright &copy; SafeSpeak.com</p>
     </div>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            var errorMessage = '';
+
+            if (name === '') {
+                errorMessage += 'Name is required. ';
+            }
+            if (phone === '') {
+                errorMessage += 'Phone number is required. ';
+            }
+            if (email === '') {
+                errorMessage += 'Email Id is required. ';
+            }
+            if (message === '') {
+                errorMessage += 'Message is required.';
+            }
+
+            if (errorMessage !== '') {
+                document.getElementById('error-message').innerText = errorMessage;
+            } else {
+                document.getElementById('error-message').innerText = '';
+                // Submit the form or perform other actions here
+                alert('Form submitted successfully!');
+            }
+        }
+    </script>
 </body>
 </html>

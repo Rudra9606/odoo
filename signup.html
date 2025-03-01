@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="signup.css">
+
+    <p class="login-link">Already have an account? <a href="login.html">Log In</a></p>
+
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-box">
+            <div class="signup-form">
+                <h1>Sign Up</h1>
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="Enter your full name">
+                    <small class="error-message"></small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email ID</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                    <small class="error-message"></small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                    <small class="error-message"></small>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm your password">
+                    <small class="error-message"></small>
+                </div>
+                <button class="signup-button">Sign Up</button>
+                <p class="login-link">Already have an account? <a href="login.html">Log In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector(".signup-button").addEventListener("click", function(event) {
+            event.preventDefault();
+            let valid = true;
+
+            document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
+
+            const fullName = document.getElementById("fullname").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("confirm-password").value.trim();
+
+            if (fullName === "") {
+                document.getElementById("fullname").nextElementSibling.textContent = "Full name is required!";
+                valid = false;
+            }
+            if (email === "") {
+                document.getElementById("email").nextElementSibling.textContent = "Email is required!";
+                valid = false;
+            }
+            if (password === "") {
+                document.getElementById("password").nextElementSibling.textContent = "Password is required!";
+                valid = false;
+            }
+            if (confirmPassword === "") {
+                document.getElementById("confirm-password").nextElementSibling.textContent = "Please confirm your password!";
+                valid = false;
+            }
+            if (password !== confirmPassword && password !== "" && confirmPassword !== "") {
+                document.getElementById("confirm-password").nextElementSibling.textContent = "Passwords do not match!";
+                valid = false;
+            }
+
+            if (valid) {
+                alert("Signup successful!");
+                // Redirect or further actions can be placed here
+            }
+        });
+    </script>
+</body>
+</html>

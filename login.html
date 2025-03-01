@@ -326,7 +326,7 @@
                     </div>
                 </div><br>
                 <div class="footer-text">
-                    <p>Dont have an account? <a href="#">Sign Up</a></p>
+                    <p class="signup-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
                 </div>
             </div>
         </div>
@@ -352,6 +352,43 @@
                 passwordField.type = 'password'; 
             }
         });
+
+    document.querySelector('.login-button').addEventListener('click', function(event) {
+        var emailField = document.getElementById('email');
+        var passwordField = document.getElementById('password');
+        var email = emailField.value.trim();
+        var password = passwordField.value.trim();
+
+        // Remove existing error messages
+        document.querySelectorAll('.error-message').forEach(el => el.remove());
+
+        var hasError = false;
+
+        if (email === '') {
+            showError(emailField, 'Email cannot be empty');
+            hasError = true;
+        }
+        if (password === '') {
+            showError(passwordField, 'Password cannot be empty');
+            hasError = true;
+        }
+
+        if (hasError) {
+            event.preventDefault();
+        }
+    });
+
+    function showError(inputElement, message) {
+        var errorMessage = document.createElement('div');
+        errorMessage.className = 'error-message';
+        errorMessage.style.color = 'red';
+        errorMessage.style.fontSize = '0.9em';
+        errorMessage.style.marginTop = '5px';
+        errorMessage.textContent = message;
+        inputElement.parentNode.appendChild(errorMessage);
+    }
+
+
     </script>   
 </body>
 </html>

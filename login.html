@@ -65,13 +65,13 @@
         }
 
         .login-box {
-            background: linear-gradient(135deg, #5c97c8, #b6612d);
+            background: linear-gradient(135deg, #53a8d3, #b66acb);
             z-index: 1;
             margin-right: -50px;
         }
 
         .info-box {
-            background: linear-gradient(135deg, #ad7f29, #41b9ce);
+            background: linear-gradient(135deg, #ba40a3, #41cebe);
             color: white;
             z-index: 2;
             position: relative;
@@ -90,6 +90,135 @@
             font-family: 'PT Serif', serif;
             animation: fadeInTitle 1.2s ease-in-out forwards;
         }
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+/* General Body Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #033541, #250958);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 40px;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Blue Bubble Animation */
+body::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(0, 123, 255, 0.4);
+    border-radius: 50%;
+    top: 10%;
+    left: 15%;
+    animation: float 6s infinite alternate ease-in-out;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(0, 123, 255, 0.3);
+    border-radius: 50%;
+    bottom: 10%;
+    right: 15%;
+    animation: float 8s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Contact Form Container */
+.contact-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 480px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Form Heading */
+.contact-content h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Form Styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Input Fields */
+input, textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    background: #f9f9f9;
+    color: #333;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Submit Button */
+button {
+    background: linear-gradient(135deg, #ffa500, #ff8c00);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff7f50, #ff6347);
+    box-shadow: 0 6px 20px rgba(255, 99, 71, 0.6);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Remove Navigation Bar */
+.navigation {
+    display: none;
+}
 
         @keyframes fadeInTitle {
             0% {
@@ -348,9 +477,7 @@
                         <a href="https://www.linkedin.com/login">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Linkedin_icon.svg" alt="LinkedIn Login">
                         </a>
-                        <a href="https://github.com/login">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Login">
-                        </a>
+                        
                     </div>
                 </div><br>
                 <div class="footer-text">
@@ -442,8 +569,5 @@
             document.querySelector('.login-form').appendChild(successMessage);
         }
     </script>
-    
-    
-     
 </body>
 </html>
